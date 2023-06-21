@@ -1,9 +1,9 @@
 import { Entity, Column, PrimaryGeneratedColumn , Unique, OneToMany } from 'typeorm';
-import { ObjectType, Field, Int} from '@nestjs/graphql';
-import { Playlist } from '../../playlists/entities/playlist.entity';
+import { ObjectType, Field, Int, Directive} from '@nestjs/graphql';
 
 @Entity()
 @ObjectType()
+@Directive('@key(fields: "id")')
 export class Users{
     @PrimaryGeneratedColumn()
     @Field((type) => Int)
@@ -22,9 +22,6 @@ export class Users{
     @Field()
     password: string;
 
-    @OneToMany(() => Playlist, (playlist) => playlist.users)
-    @Field(() => [Playlist], {nullable: true})
-    playlists: Playlist[];
 }
     
 

@@ -1,4 +1,4 @@
-import { Resolver, ResolveField, Parent } from '@nestjs/graphql';
+import { Resolver, ResolveField, Parent, ResolveReference } from '@nestjs/graphql';
 import { Query , Mutation, Args} from '@nestjs/graphql'
 import { UsersService } from '../services/users.service';
 import { Users } from '../entities/users.entity';
@@ -22,5 +22,10 @@ export class UsersResolver {
   @Mutation((returns) => Users)
   createUser(@Args('userInput') userInput: CreateUserInput){
     return this.usersService.createUser(userInput)
+  }
+
+  @ResolveReference()
+  resolvereference(ref: { __typename: string, id: number}){
+    return this.usersService.findOne(ref.id);
   }
 }

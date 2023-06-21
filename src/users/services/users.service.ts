@@ -12,7 +12,7 @@ export class UsersService {
         ){}
 
     async findAll(): Promise<Users[]> {
-        return this.usersRepository.find({relations:['playlists']});
+        return this.usersRepository.find();
     }
     
     async findOne(id: number): Promise<Users>{
