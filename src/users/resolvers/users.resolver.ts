@@ -25,7 +25,7 @@ export class UsersResolver {
   }
 
   @ResolveReference()
-  resolvereference(ref: { __typename: string, id: number}){
+  resolvereference(ref: {__typename: string, id: number}){
     return this.usersService.findOne(ref.id);
   }
 }
