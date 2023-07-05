@@ -44,14 +44,12 @@ describe('UsersResolver', () => {
           name: 'John Doe',
           email: 'john.doe@example.com',
           password: '1234',
-          playlists: [],
         },
         {
           id: 2,
           name: 'Jane Smith',
           email: 'jane.smith@example.com',
           password: '1234',
-          playlists: [],
         },
       ];
       jest.spyOn(service, 'findAll').mockResolvedValue(users);
@@ -70,7 +68,6 @@ describe('UsersResolver', () => {
         name: 'John Doe',
         email: 'test1@test.com',
         password: 'password1',
-        playlists: [],
       };
       jest.spyOn(service, 'findUserByEmailPassword').mockResolvedValue(user);
 
@@ -96,7 +93,6 @@ describe('UsersResolver', () => {
         name: 'John Doe',
         email: 'test1@test.com',
         password: 'password1',
-        playlists: [],
       };
       jest.spyOn(service, 'createUser').mockResolvedValue(user);
 

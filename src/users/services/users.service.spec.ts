@@ -40,14 +40,12 @@ describe('UsersService', () => {
           name: 'John Doe',
           email: 'john.doe@example.com',
           password: '1234',
-          playlists: [],
         },
         {
           id: 2,
           name: 'Jane Smith',
           email: 'jane.smith@example.com',
           password: '1234',
-          playlists: [],
         },
       ];
       jest.spyOn(repository, 'find').mockResolvedValue(users);
@@ -55,9 +53,7 @@ describe('UsersService', () => {
       const result = await service.findAll();
 
       expect(result).toEqual(users);
-      expect(repository.find).toHaveBeenCalledWith({
-        relations: ['playlists'],
-      });
+      expect(repository.find).toHaveBeenCalledWith();
     });
   });
 
@@ -68,7 +64,6 @@ describe('UsersService', () => {
         name: 'John Doe',
         email: 'john.doe@example.com',
         password: '1234',
-        playlists: [],
       };
       jest.spyOn(repository, 'findOne').mockResolvedValue(user);
 
@@ -86,7 +81,6 @@ describe('UsersService', () => {
         name: 'John Doe',
         email: 'john.doe@example.com',
         password: 'password',
-        playlists: [],
       };
       jest.spyOn(repository, 'findOne').mockResolvedValue(user);
 
@@ -114,7 +108,6 @@ describe('UsersService', () => {
         name: 'John Doe',
         email: 'john.doe@example.com',
         password: 'password',
-        playlists: [],
       };
       jest.spyOn(repository, 'create').mockReturnValue(newUser);
       jest.spyOn(repository, 'save').mockResolvedValue(newUser);
